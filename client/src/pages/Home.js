@@ -6,7 +6,8 @@ const Home = () => {
     return (
         <div>
             <AppBar />
-            <h1>Home</h1>
+            <div className="ui container">
+            </div>
         </div>
     )
 }

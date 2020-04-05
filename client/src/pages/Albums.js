@@ -6,7 +6,8 @@ const Albums = () => {
     return (
         <div>
             <AppBar />
-            <h1>Albums</h1>
+            <div className="ui container">
+            </div>
         </div>
     )
 }

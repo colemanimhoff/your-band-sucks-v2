@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom'
 
 const AppBar = () => {
     const path = useLocation().pathname
-
       return (
         <div>
             <div className="ui stackable menu">

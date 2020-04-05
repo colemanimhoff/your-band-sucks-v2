@@ -6,7 +6,8 @@ const Login = () => {
     return (
         <div>
             <AppBar />
-            <h1>Login</h1>
+            <div className="ui container">
+            </div>
         </div>
     )
 }

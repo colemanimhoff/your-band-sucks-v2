@@ -1,12 +1,26 @@
+:root {
+    --active: #606368;
+    --background: #333333;
+    --paper: #3d4042;
+    --font: #B7BABF;
+    --primary1: #FFB2FF;
+    --primary2: #ea80fc;
+    --primary3: #B64FC8;
+}
+
 .App {
-    background-color: rgb(48, 48, 48);
+    background-color: var(--background);
     height: 100vh;
 }
 
-.ui.stackable.menu {
-    background-color: rgb(66, 66, 66);
+.item.active {
+    background-color: var(--active) !important;
 }
 
-.item.active {
-    background-color: rgba(255, 255, 255, 0.16) !important;
+.item {
+    color: var(--primary2) !important;
+}
+
+.ui.stackable.menu {
+    background-color: var(--paper);
 }
