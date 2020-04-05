@@ -1,22 +1,24 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 const AppBar = () => {
-    const [ activeItem, setActiveItem ] = useState('home')
-    const handleClick = (e) => setActiveItem(e.target.name)
+    const path = useLocation().pathname
 
       return (
         <div>
             <div className="ui stackable menu">
-                <Link className={`item ${activeItem === 'home' ? 'active' : ''}`} name="home" onClick={handleClick} to="/">
+                <Link className={path === '/' ? 'item active' : 'item'} name="home" to="/">
                     <i className="music icon"></i>
                 </Link>
-                <Link className={`item ${activeItem === 'albums' ? 'active' : ''}`} name="albums" onClick={handleClick} to="/albums">
+                <Link className={path === '/albums' ? 'item active' : 'item'} name="albums" to="/albums">
                     Albums
                 </Link>
                 <div className="right menu">
-                    <Link className={`item ${activeItem === 'login' ? 'active' : ''}`} name="login" onClick={handleClick} to="/login">
+                    <Link className={path === '/login' ? 'item active' : 'item'} name="login" to="/login">
                         Login
+                    </Link>
+                    <Link className={path === '/signup' ? 'item active' : 'item'} name="signup" to="/signup">
+                        Signup
                     </Link>
                 </div>
             </div>

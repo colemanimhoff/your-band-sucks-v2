@@ -5,6 +5,7 @@ import './App.css'
 import Albums from './pages/Albums'
 import Home from './pages/Home'
 import Login from './pages/Login'
+import SignUp from './pages/SignUp'
 
 const App = () => {
   return (
@@ -14,11 +15,14 @@ const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/albums">
+          <Route path="/albums">
             <Albums />
           </Route>
-          <Route exact path="/login">
+          <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/signup">
+            <SignUp />
           </Route>
         </Switch>
       </Router>
