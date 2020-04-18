@@ -8,6 +8,15 @@
     --primary3: #B64FC8;
 }
 
+@keyframes flicker{
+    0% {opacity:0;}
+    9% {opacity:0;}
+    10% {opacity:.7;}
+    13% {opacity:0;}
+    20% {opacity:.7;}
+    25% {opacity:1;}
+}
+
 .App {
     background-color: var(--background);
     height: 100vh;
@@ -19,6 +28,37 @@
 
 .item {
     color: var(--primary2) !important;
+}
+
+.flickering {
+    animation: flicker 4s infinite;
+}
+
+.main-title {
+    color: var(--primary1);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 84px;
+    letter-spacing: 7px;
+    text-shadow: 
+        0 0 7px rgb(255, 225, 255),
+        0 0 14px var(--primary1);
+}
+
+.ui.container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    height: 90%; 
+    align-items: center;
+}
+
+.ui.segment {
+    background-color: var(--paper);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 28px;
+    width: 100%;
 }
 
 .ui.stackable.menu {
