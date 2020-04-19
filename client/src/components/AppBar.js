@@ -13,12 +13,20 @@ const AppBar = () => {
             <Link className={path === '/albums' ? 'item active' : 'item'} to="/albums">
                 Albums
             </Link>
-                <div className="right menu">
+                {/* <div className="right menu">
                     <Link className={path === '/login' ? 'item active' : 'item'} to="/login">
                         Login
                     </Link>
                     <Link className={path === '/signup' ? 'item active' : 'item'} to="/signup">
                         Signup
+                    </Link>
+                </div> */}
+                <div className="right menu">
+                    <Link className={path === '/albums/new' ? 'item active' : 'item'} to="/albums/new">
+                        Add
+                    </Link>
+                    <Link className={path === '/logout' ? 'item active' : 'item'} to="/logout">
+                        Logout
                     </Link>
                 </div>
             )
