@@ -1,33 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import AppBar from '../components/AppBar'
+import AlbumSearch from '../components/AlbumSearch'
 
 const AddAlbum = () => {
-    const [results, setResults] = useState([])
-    
-    useEffect(() => {
-        const perPage = 10
-        const token = process.env.REACT_APP_TOKEN
-        const query = 'come%20to%20my%20party'
-        const headers = new Headers({
-            'Content-Type': 'application/json',
-            'Authorization': `Discogs token=${token}`,
-            'User-Agent': 'YourBandSucks/2.0'
-        })
-
-        fetch(`https://api.discogs.com/database/search?q=${query}&per_page=${10}`, { method: 'GET', mode: 'cors', headers: headers })
-            .then(res => res.json())
-            .then(res => {
-                setResults(res.results)
-            })
-            .catch(err => console.log(err))
-
-        
-    }, [])
     return (
         <>
             <AppBar />
-            {results.map(result => <p key={result.id}>{result.title}</p>)}
+            <div className="ui container">
+                <h1 className="text">Add Album</h1>
+                <div className="ui grid" columns={2}>
+                    <div className="eight wide column">
+                        <AlbumSearch />
+                    </div>
+                    <div className="eight wide column">
+                        <p className="text">Album choice goes here...</p>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

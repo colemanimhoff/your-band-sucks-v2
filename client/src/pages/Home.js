@@ -7,8 +7,8 @@ const Home = () => {
     return (
         <>
             <AppBar />
-                <div className="ui container">
-                    <div className="ui segment">
+                <div className="ui container splash-container">
+                    <div className="ui segment splash-segment">
                         <h1 className="main-title">
                             <div>
                                 <span>YOUR </span>

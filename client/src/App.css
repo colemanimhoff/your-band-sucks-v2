@@ -22,6 +22,10 @@
     height: 100vh;
 }
 
+.album-search {
+    width: 100%;
+}
+
 .item.active {
     background-color: var(--active) !important;
 }
@@ -44,7 +48,12 @@
         0 0 14px var(--primary1);
 }
 
-.ui.container {
+
+.text {
+    color: var(--font);
+}
+
+.ui.container.splash-container {
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -52,7 +61,11 @@
     align-items: center;
 }
 
-.ui.segment {
+.ui.segment.search-result {
+    background-color: var(--paper) 
+}
+
+.ui.segment.splash-segment {
     background-color: var(--paper);
     display: flex;
     justify-content: space-around;
