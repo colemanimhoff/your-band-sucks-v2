@@ -21,13 +21,15 @@ const AlbumSearch = () => {
             'User-Agent': 'YourBandSucks/2.0'
         })
         
-        const url = `https://api.discogs.com/database/search?q=${query}&per_page=${perPage}`
+        const proxyurl = "https://cors-anywhere.herokuapp.com/"
+        const url = `https://api.discogs.com/database/search?q=${query}&per_page=${perPage}&type=master`
         const options = {
-            method: 'GET', 
+            method: 'GET',
+            mode: 'cors',
             headers: headers
         }
 
-        fetch(url, options)
+        fetch(proxyurl + url, options)
             .then(res => res.json())
             .then(res => {
                 setResults(res.results)
@@ -44,33 +46,52 @@ const AlbumSearch = () => {
                     <input
                     autoComplete="off"
                     className="prompt"
-                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Enter album name"
+                    onChange={(e) => setTimeout(setQuery(e.target.value), 300)}
+                    results={results}
                     type="text"
                     tabIndex="0"
-                    results={results}
                     value={query} />
                     <i aria-hidden="true" className="search icon"></i>
                 </div>
             </div>
-            {!loading && query.trim() === ""
-                ? ([])
-                : (
-                    <div className="ui segment search-result">
-                        {results.map(result => (
-                            <div key={result.id} className="feed">
-                                <div className="event">
-                                    <div className="label">
-                                        {result.thumb !== ''
-                                            ? <img alt={result.title} className="ui tiny rounded image" src={result.cover_image} />
-                                            : []   
-                                        }
-                                    </div>
-                                    <div className="content">{result.title}.</div>
-                                </div>
-                            </div>
-                        ))}
+            {loading
+                ? (
+                    <div className="event search-result">
+                        <p className="text">Loading...</p>
                     </div>
-                )}
+                )
+                : results.length > 0
+                ? (
+                    <div className="ui segment search-results">
+                        <div className="ui list">
+                            {results.map(result => (
+                                <div key={result.id} className="ui event rounded search-result">
+                                        <div className="ui card fluid search-result">
+                                            {result.cover !== ''
+                                                ? <img alt={result.title} className="ui tiny rounded image search-result-image" src={result.cover_image} />
+                                                : []   
+                                            }
+                                        </div>
+                                    <div className="search-result-content">
+                                        <div className="text">Title - {result.title}</div>
+                                        <div className="text">Year: {result.year}</div>
+                                        <div className="text"> Genre: {result.genre.map(g => g + ' ')}</div>
+                                        <a
+                                        href={`https://www.discogs.com/${result.uri}`}
+                                        rel="noopener noreferrer"
+                                        target="_blank">
+                                            <i className="ui external alternate icon"></i>
+                                            View on Discogs
+                                        </a>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )
+                : ([])
+            }
         </>
     )
 }
