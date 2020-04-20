@@ -22,7 +22,7 @@ const AlbumSearch = () => {
         })
         
         const proxyurl = "https://cors-anywhere.herokuapp.com/"
-        const url = `https://api.discogs.com/database/search?q=${query}&per_page=${perPage}&type=master`
+        const url = `https://api.discogs.com/database/search?q=${query}&per_page=${perPage}&type=release`
         const options = {
             method: 'GET',
             mode: 'cors',
@@ -41,19 +41,17 @@ const AlbumSearch = () => {
 
     return (
         <>
-            <div className="ui search">
-                <div className="ui icon input album-search">
-                    <input
-                    autoComplete="off"
-                    className="prompt"
-                    placeholder="Enter album name"
-                    onChange={(e) => setTimeout(setQuery(e.target.value), 300)}
-                    results={results}
-                    type="text"
-                    tabIndex="0"
-                    value={query} />
-                    <i aria-hidden="true" className="search icon"></i>
-                </div>
+            <div className="ui icon input album-search">
+                <input
+                autoComplete="off"
+                className="prompt"
+                placeholder="Enter album name"
+                onChange={(e) => setTimeout(setQuery(e.target.value), 500)}
+                results={results}
+                type="text"
+                tabIndex="0"
+                value={query} />
+                <i aria-hidden="true" className="search icon"></i>
             </div>
             {loading
                 ? (
@@ -74,7 +72,7 @@ const AlbumSearch = () => {
                                             }
                                         </div>
                                     <div className="search-result-content">
-                                        <div className="text">Title - {result.title}</div>
+                                        <div className="text search-result-title">Title - {result.title}</div>
                                         <div className="text">Year: {result.year}</div>
                                         <div className="text"> Genre: {result.genre.map(g => g + ' ')}</div>
                                         <a

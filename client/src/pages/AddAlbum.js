@@ -8,7 +8,7 @@ const AddAlbum = () => {
         <>
             <AppBar />
             <div className="ui container">
-                <h1 className="text">Add Album</h1>
+                <h1 className="page-title">Add Album</h1>
                 <div className="ui grid" columns={2}>
                     <div className="eight wide column">
                         <AlbumSearch />
