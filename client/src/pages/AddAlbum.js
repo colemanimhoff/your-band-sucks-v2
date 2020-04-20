@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import AppBar from '../components/AppBar'
 import AlbumSearch from '../components/AlbumSearch'
 
 const AddAlbum = () => {
+    const [album, setAlbum] = useState({})
     return (
         <>
             <AppBar />
@@ -11,10 +12,10 @@ const AddAlbum = () => {
                 <h1 className="page-title">Add Album</h1>
                 <div className="ui grid" columns={2}>
                     <div className="eight wide column">
-                        <AlbumSearch />
+                        <AlbumSearch setAlbum={setAlbum}/>
                     </div>
                     <div className="eight wide column">
-                        <p className="text">Album choice goes here...</p>
+                        <code className="text">{JSON.stringify(album)}</code>
                     </div>
                 </div>
             </div>

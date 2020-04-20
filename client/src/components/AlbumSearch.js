@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const AlbumSearch = () => {
+const AlbumSearch = ({ setAlbum }) => {
     const [loading, setLoading] = useState(false)
     const [results, setResults] = useState([])
     const [query, setQuery] = useState('')
@@ -34,7 +34,6 @@ const AlbumSearch = () => {
             .then(res => {
                 setResults(res.results)
                 setLoading(false)
-                console.log(res)
             })
             .catch(err => console.log(err))
     }, [query])
@@ -64,7 +63,10 @@ const AlbumSearch = () => {
                     <div className="ui segment search-results">
                         <div className="ui list">
                             {results.map(result => (
-                                <div key={result.id} className="ui event rounded search-result">
+                                <div
+                                    key={result.id}
+                                    className="ui event rounded search-result"
+                                    onClick={() => setAlbum(result)}>
                                         <div className="ui card fluid search-result">
                                             {result.cover !== ''
                                                 ? <img alt={result.title} className="ui tiny rounded image search-result-image" src={result.cover_image} />
