@@ -15,7 +15,14 @@ const AddAlbum = () => {
                         <AlbumSearch setAlbum={setAlbum}/>
                     </div>
                     <div className="eight wide column">
-                        <code className="text">{JSON.stringify(album)}</code>
+                        {album.cover_image
+                            ? (
+                                <img alt={album.title} src={album.cover_image} className="ui large bordered image right floated" />
+                            )
+                            : (
+                                []
+                            )
+                        } 
                     </div>
                 </div>
             </div>
