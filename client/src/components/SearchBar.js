@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 
-const AlbumSearch = ({ setAlbum }) => {
+import addAlbumContext from '../context/AddAlbumContext'
+
+const SearchBar = () => {
     const [loading, setLoading] = useState(false)
     const [results, setResults] = useState([])
     const [query, setQuery] = useState('')
+
+    const context = useContext(addAlbumContext)
 
     useEffect(() => {
         if (query.trim() === '') {
@@ -73,7 +77,7 @@ const AlbumSearch = ({ setAlbum }) => {
                                 <div
                                     key={result.id}
                                     className="ui event rounded search-result"
-                                    onClick={() => setAlbum(result)}>
+                                    onClick={() => context.setAlbum(result)}>
                                     <div className="ui card fluid search-result">
                                         {result.cover !== ''
                                             ? <img alt={result.title} className="ui tiny rounded image search-result-image" src={result.cover_image} />
@@ -102,4 +106,4 @@ const AlbumSearch = ({ setAlbum }) => {
     )
 }
 
-export default AlbumSearch
+export default SearchBar
